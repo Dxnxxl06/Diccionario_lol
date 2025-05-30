@@ -63,6 +63,35 @@ def menuGestionLibros():
 
 #Prestamo de Libro
 
+def crearPrestamo():
+    codigo = input("Ingrese el codigo del libro que quiere pedir prestado: ")
+    nombre= input("Nombre de la persona: ")
+    documento = input("Ingrese el numero de documento")
+    fecha = input("La fecha del prestamo fue (YYYY-MM-DD):")
+    prestamo= {"Codigo": codigo, "Nombre": nombre, "Documento": documento, "Fecha del prestamo": fecha, "Devuelto": False }
+    prestamo.append(prestamo)
+    historial.append(prestamo.copy())
+    print("Prestamo Registrado.")
+
+#Devolucion de los libros
+
+def devolucionLibro():
+    documento = input("Ingrese el documento del usuario")
+    encontrados = [p for p in prestamos if p["documento"] == documento and not p["Devuelto"]]
+    if not encontrados:
+        print("Este documento no tiene ningun libro prestado")
+        return
+    for p in encontrados:
+        p["Devuelto"] = True
+    print("Todos los libros marcados han sido devueltos")
+
+#Lista de libros
+
+def listarLibros():
+    pass
+
+
+
 
 
 
@@ -70,7 +99,7 @@ def menuGestionLibros():
 
 while True:
     limpiarConsola()
-    print(menuOptions)
+    print()
     input("Enter para continuar")
         
 
